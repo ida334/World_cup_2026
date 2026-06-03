@@ -2,7 +2,7 @@
 
 A full-stack data science project that combines SQL data cleaning, machine learning, and an interactive dashboard to predict the 2026 FIFA World Cup — hosted live on Streamlit Cloud.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ida334-world-cup-2026-dashboard-apppy-xxxx.streamlit.app)
+[[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ida334-world-cup-2026-dashboard-apppy-xxxx.streamlit.app)](https://ida334-worldcup2026.streamlit.app/)
 
 ---
 
