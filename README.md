@@ -167,4 +167,4 @@ Open [http://localhost:8501](http://localhost:8501) in your browser.
 
 ## Author
 
-**Ida Nakiva** — [github.com/ida334](https://github.com/ida334)
+**Idan Akiva** — [github.com/ida334](https://github.com/ida334)
