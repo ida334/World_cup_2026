@@ -1,3 +1,4 @@
+
 <p align="center">
   <strong>⚽ World Cup 2026 Predictor</strong>
 </p>
@@ -37,7 +38,7 @@
 |---|---|
 | ![About](screenshots/about.png) | ![Historical](screenshots/historical.png) |
 | **Head to Head** | **2026 Predictions** |
-| ![H2H](screenshots/head_to_head.png) | ![Predictions](screenshots/predictions.png) |
+| ![H2H](<img width="1903" height="858" alt="hth_page" src="https://github.com/user-attachments/assets/2a5f24c2-0893-4ee0-aac8-2265532b8a44" />) | ![Predictions](screenshots/predictions.png) |
 
 ---
 
