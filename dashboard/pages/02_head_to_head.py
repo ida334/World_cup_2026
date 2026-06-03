@@ -81,7 +81,7 @@ else:
     draws   = (h2h["result"] == "Draw").sum()
     losses  = (h2h["result"] == "Loss").sum()
 
-    # Summary stats row
+    # ── 1. Summary stats row ───────────────────────────────────────────────────
     st.markdown(section_header_html(f"{team_a} vs {team_b} — World Cup Record"), unsafe_allow_html=True)
     c1, c2, c3, c4 = st.columns(4)
     for col, (label, val, color) in zip([c1, c2, c3, c4], [
@@ -99,7 +99,42 @@ else:
   <div style="color:{C_TEXT}; font-size:2rem; font-weight:800;">{val}</div>
 </div>""", unsafe_allow_html=True)
 
-    # Win rate donut
+# ── 2. Match Prediction ────────────────────────────────────────────────────────
+st.markdown(section_header_html("Match Prediction", C_GOLD), unsafe_allow_html=True)
+
+stage_label = st.selectbox("Stage", ["Group stage", "Round of 32 / Round of 16", "Quarter-final", "Semi-final", "Final"])
+stage_map   = {"Group stage": 1, "Round of 32 / Round of 16": 2,
+               "Quarter-final": 3, "Semi-final": 4, "Final": 6}
+stage_rank  = stage_map[stage_label]
+
+if model is None:
+    st.warning("Model not loaded. Run `python run_pipeline.py` first.")
+else:
+    from src.model import predict_match
+    pred = predict_match(team_a, team_b, stage_rank, conn, model)
+
+    result_text = {
+        "H": f"🟢 Predicted: <b>{team_a}</b> wins",
+        "D": "🟡 Predicted: <b>Draw</b>",
+        "A": f"🔵 Predicted: <b>{team_b}</b> wins",
+    }[pred["predicted_result"]]
+    st.markdown(f"""
+<div style="background:linear-gradient(90deg,#1a2340,{C_SURFACE});
+            border:1px solid {C_GOLD}; border-radius:12px;
+            padding:20px 24px; margin:12px 0;">
+  <div style="font-size:1.1rem; color:{C_TEXT};">{result_text}</div>
+</div>
+""", unsafe_allow_html=True)
+
+    st.markdown(
+        prob_bar_html(f"{team_a} win", pred["home_win_prob"], C_BLUE) +
+        prob_bar_html("Draw",          pred["draw_prob"],       C_SUBTEXT) +
+        prob_bar_html(f"{team_b} win", pred["away_win_prob"],   C_RED),
+        unsafe_allow_html=True,
+    )
+
+if not h2h.empty:
+    # ── 3. Recent Meetings + Donut ─────────────────────────────────────────────
     st.markdown("<div style='margin-top:28px;'></div>", unsafe_allow_html=True)
     left_col, right_col = st.columns([3, 2], gap="large", vertical_alignment="top")
     with left_col:
@@ -155,7 +190,7 @@ else:
         apply_chart_defaults(donut, 240)
         st.plotly_chart(donut, use_container_width=True)
 
-    # Goals over time
+    # ── 4. Goals over time ─────────────────────────────────────────────────────
     st.markdown(section_header_html("Goals Scored per Meeting"), unsafe_allow_html=True)
     h2h["a_goals"] = h2h.apply(
         lambda r: r["home_goals"] if r["home_team"] == team_a else r["away_goals"], axis=1)
@@ -174,39 +209,3 @@ else:
     fig_g.update_layout(xaxis_title="Year", yaxis_title="Goals")
     apply_chart_defaults(fig_g, 260)
     st.plotly_chart(fig_g, use_container_width=True)
-
-# ── Live prediction ────────────────────────────────────────────────────────────
-st.markdown(section_header_html("Match Prediction", C_GOLD), unsafe_allow_html=True)
-
-stage_label = st.selectbox("Stage", ["Group stage", "Round of 32 / Round of 16", "Quarter-final", "Semi-final", "Final"])
-stage_map   = {"Group stage": 1, "Round of 32 / Round of 16": 2,
-               "Quarter-final": 3, "Semi-final": 4, "Final": 6}
-stage_rank  = stage_map[stage_label]
-
-if model is None:
-    st.warning("Model not loaded. Run `python run_pipeline.py` first.")
-else:
-    from src.model import predict_match
-    pred = predict_match(team_a, team_b, stage_rank, conn, model)
-
-    # Styled prediction banner
-    result_text = {
-        "H": f"🟢 Predicted: <b>{team_a}</b> wins",
-        "D": "🟡 Predicted: <b>Draw</b>",
-        "A": f"🔵 Predicted: <b>{team_b}</b> wins",
-    }[pred["predicted_result"]]
-    st.markdown(f"""
-<div style="background:linear-gradient(90deg,#1a2340,{C_SURFACE});
-            border:1px solid {C_GOLD}; border-radius:12px;
-            padding:20px 24px; margin:12px 0;">
-  <div style="font-size:1.1rem; color:{C_TEXT};">{result_text}</div>
-</div>
-""", unsafe_allow_html=True)
-
-    # Probability bars — scale to 100% absolute so width reflects true chance
-    st.markdown(
-        prob_bar_html(f"{team_a} win", pred["home_win_prob"], C_BLUE) +
-        prob_bar_html("Draw",          pred["draw_prob"],       C_SUBTEXT) +
-        prob_bar_html(f"{team_b} win", pred["away_win_prob"],   C_RED),
-        unsafe_allow_html=True,
-    )
