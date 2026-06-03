@@ -10,8 +10,6 @@ from dashboard.theme import (inject_css, section_header_html, matchup_card_html,
                               C_GOLD, C_GREEN, C_RED, C_BLUE, C_SUBTEXT, C_TEXT,
                               C_SURFACE, C_BORDER, C_SURFACE2)
 
-st.set_page_config(page_title="Head-to-Head", page_icon="⚔️", layout="wide")
-inject_css(st)
 
 st.markdown("""
 <h1 style="margin-bottom: 4px;">⚔️ Head-to-Head</h1>

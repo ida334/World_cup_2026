@@ -9,8 +9,6 @@ from dashboard.theme import (inject_css, section_header_html, apply_chart_defaul
                               C_GOLD, C_GREEN, C_RED, C_BLUE, C_SUBTEXT,
                               C_TEXT, C_SURFACE, C_BORDER, C_SURFACE2)
 
-st.set_page_config(page_title="Data Explorer", page_icon="🔍", layout="wide")
-inject_css(st)
 
 st.markdown("""
 <h1 style="margin-bottom: 4px;">🔍 Data Explorer</h1>

@@ -11,8 +11,6 @@ from dashboard.theme import (inject_css, section_header_html, prob_bar_html,
                               C_TEXT, C_SURFACE, C_BORDER, C_SURFACE2)
 from src.groups_2026 import GROUPS_2026
 
-st.set_page_config(page_title="2026 Predictions", page_icon="🏆", layout="wide")
-inject_css(st)
 
 st.markdown("""
 <h1 style="margin-bottom: 4px;">🏆 2026 World Cup Predictions</h1>

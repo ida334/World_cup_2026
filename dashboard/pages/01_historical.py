@@ -10,8 +10,6 @@ from dashboard.theme import (inject_css, section_header_html, apply_chart_defaul
                               C_GOLD, C_GREEN, C_BLUE, C_SURFACE, C_BORDER,
                               C_SUBTEXT, C_TEXT, TEAM_COLORS)
 
-st.set_page_config(page_title="Historical Overview", page_icon="📊", layout="wide")
-inject_css(st)
 
 st.markdown("""
 <h1 style="margin-bottom: 4px;">📊 Historical Overview</h1>
