@@ -17,7 +17,7 @@ A full-stack data science project that combines SQL data cleaning, machine learn
 
 ## Live Demo
 
-🔗 [Open the app on Streamlit Cloud]([https://ida334-world-cup-2026-dashboard-apppy-xxxx.streamlit.app](https://ida334-worldcup2026.streamlit.app/))
+🔗 [Open the app on Streamlit Cloud](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://ida334-world-cup-2026-dashboard-apppy-xxxx.streamlit.app)](https://ida334-worldcup2026.streamlit.app/)
 
 ---
 
