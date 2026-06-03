@@ -38,7 +38,7 @@
 |---|---|
 | ![About](screenshots/about.png) | ![Historical](screenshots/historical.png) |
 | **Head to Head** | **2026 Predictions** |
-| ![H2H](<img width="1903" height="858" alt="hth_page" src="https://github.com/user-attachments/assets/2a5f24c2-0893-4ee0-aac8-2265532b8a44" />) | ![Predictions](screenshots/predictions.png) |
+| ![H2H](<img width="1903" height="858" alt="hth_page" src="https://github.com/user-attachments/assets/2a5f24c2-0893-4ee0-aac8-2265532b8a44" />) | ![Predictions](<img width="1901" height="847" alt="pred_page" src="https://github.com/user-attachments/assets/6175b58d-47e6-4e93-a7be-e285fc7191a3" />) |
 
 ---
 
