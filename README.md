@@ -30,18 +30,6 @@
 
 ---
 
-## Screenshots
-
-> *Replace the placeholders below by dragging your own screenshots into this file on GitHub*
-
-| About Page | Historical Overview |
-|---|---|
-| ![About](screenshots/about.png) | ![Historical](screenshots/historical.png) |
-| **Head to Head** | **2026 Predictions** |
-| ![H2H](<img width="1903" height="858" alt="hth_page" src="https://github.com/user-attachments/assets/2a5f24c2-0893-4ee0-aac8-2265532b8a44" />) | ![Predictions](<img width="1901" height="847" alt="pred_page" src="https://github.com/user-attachments/assets/6175b58d-47e6-4e93-a7be-e285fc7191a3" />) |
-
----
-
 ## What It Does
 
 - **Cleans 90+ years of World Cup data** — 1930 to 2022 across 4 SQL scripts, fixing encoding issues, normalising team names (e.g. "Germany FR" → "Germany"), and building aggregation views

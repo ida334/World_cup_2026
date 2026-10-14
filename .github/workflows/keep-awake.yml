@@ -1,0 +1,30 @@
+name: Keep Streamlit app awake
+
+on:
+  schedule:
+    # Every 4 hours, at 17 minutes past the hour (UTC). Streamlit sleeps free
+    # apps after about 12 hours without visits, so this leaves a wide margin.
+    - cron: "17 */4 * * *"
+  workflow_dispatch: # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: read
+
+jobs:
+  wake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Playwright and Chromium
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+
+      - name: Visit the app and wake it if needed
+        run: python scripts/keep_awake.py
