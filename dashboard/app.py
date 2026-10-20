@@ -15,31 +15,8 @@ st.set_page_config(
 )
 
 from dashboard.theme import inject_css, C_GOLD
-from src.db_loader import get_connection
-from src.model import load_model
-from src.simulator import load_simulation, SIM_PATH
 
 inject_css(st)
-
-
-@st.cache_resource
-def get_db():
-    return get_connection()
-
-
-@st.cache_resource
-def get_model_cached():
-    try:
-        return load_model()
-    except FileNotFoundError:
-        return None
-
-
-@st.cache_data
-def get_simulation():
-    if not os.path.exists(SIM_PATH):
-        return None
-    return load_simulation()
 
 
 st.sidebar.markdown(f"""
@@ -51,7 +28,7 @@ st.sidebar.markdown(f"""
 """, unsafe_allow_html=True)
 st.sidebar.markdown("---")
 
-_p = os.path.join(os.path.dirname(__file__), "pages")
+_p = os.path.join(os.path.dirname(__file__), "views")
 
 pg = st.navigation([
     st.Page(os.path.join(_p, "00_about.py"),         title="About App"),

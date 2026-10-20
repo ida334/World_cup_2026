@@ -3,7 +3,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 
 import streamlit as st
 import pandas as pd
-from dashboard.app import get_db, get_model_cached, get_simulation
+from dashboard.data import get_db, get_model_cached, get_simulation
 from dashboard.theme import hero_html, stat_card_html, section_header_html, C_GOLD, C_GREEN, C_BLUE, C_RED
 
 st.markdown(hero_html(

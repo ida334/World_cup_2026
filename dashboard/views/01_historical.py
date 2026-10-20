@@ -5,7 +5,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from dashboard.app import get_db
+from dashboard.data import get_db
 from dashboard.theme import (inject_css, section_header_html, apply_chart_defaults,
                               C_GOLD, C_GREEN, C_BLUE, C_SURFACE, C_BORDER,
                               C_SUBTEXT, C_TEXT, TEAM_COLORS)
@@ -127,7 +127,7 @@ if confederation_filter != "All":
 else:
     display = team_stats.copy()
 
-display["win_rate"] = (display["wins"] / display["total_matches"].replace(0, 1)).round(3)
+display["win_rate"] = (display["wins"] / display["total_matches"].replace(0, 1) * 100).round(1)
 display = display[[
     "team", "tournaments_played", "total_matches", "wins", "draws", "losses",
     "total_gf", "total_ga", "total_gd", "win_rate", "best_stage_reached"
