@@ -127,7 +127,7 @@ if confederation_filter != "All":
 else:
     display = team_stats.copy()
 
-display["win_rate"] = (display["wins"] / display["total_matches"].replace(0, 1)).round(3)
+display["win_rate"] = (display["wins"] / display["total_matches"].replace(0, 1) * 100).round(1)
 display = display[[
     "team", "tournaments_played", "total_matches", "wins", "draws", "losses",
     "total_gf", "total_ga", "total_gd", "win_rate", "best_stage_reached"

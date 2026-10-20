@@ -86,13 +86,18 @@ with tab1:
     st.plotly_chart(fig, use_container_width=True)
 
     st.markdown(section_header_html("Full Probability Table — All 48 Teams"), unsafe_allow_html=True)
+    # Probabilities are fractions (0.141); printf-style "%.1f%%" needs them scaled to 14.1
+    prob_cols = ["P(Champion)", "P(Final)", "P(Semi)", "P(QF)", "P(Advance)"]
+    df_table = df_odds.copy()
+    df_table[prob_cols] = df_table[prob_cols] * 100
+
     # Use column_config instead of background_gradient — no matplotlib dependency
     st.dataframe(
-        df_odds,
+        df_table,
         column_config={
             "P(Champion)": st.column_config.ProgressColumn(
                 "P(Champion)", min_value=0,
-                max_value=float(df_odds["P(Champion)"].max()),
+                max_value=float(df_table["P(Champion)"].max()),
                 format="%.1f%%",
             ),
             "P(Final)":   st.column_config.NumberColumn("P(Final)",   format="%.1f%%"),
