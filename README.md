@@ -80,7 +80,7 @@ World_cup_2026/
 ├── dashboard/
 │   ├── app.py                      # Entry point + navigation
 │   ├── theme.py                    # Dark navy design system
-│   └── pages/                      # 5 Streamlit pages
+│   └── views/                      # 5 Streamlit pages
 ├── models/
 │   └── xgb_match_predictor.pkl
 ├── run_pipeline.py                 # One-command: DB → train → simulate

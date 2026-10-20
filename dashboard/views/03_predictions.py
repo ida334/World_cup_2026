@@ -4,7 +4,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
-from dashboard.app import get_db, get_model_cached, get_simulation
+from dashboard.data import get_db, get_model_cached, get_simulation
 from dashboard.theme import (inject_css, section_header_html, prob_bar_html,
                               apply_chart_defaults,
                               C_GOLD, C_GREEN, C_RED, C_BLUE, C_SUBTEXT,

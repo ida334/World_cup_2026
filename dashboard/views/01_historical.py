@@ -5,7 +5,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from dashboard.app import get_db
+from dashboard.data import get_db
 from dashboard.theme import (inject_css, section_header_html, apply_chart_defaults,
                               C_GOLD, C_GREEN, C_BLUE, C_SURFACE, C_BORDER,
                               C_SUBTEXT, C_TEXT, TEAM_COLORS)
